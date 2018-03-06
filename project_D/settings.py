@@ -25,7 +25,7 @@ SECRET_KEY = '1oj_&5%&5@n967zqee@-ep7*eum&i@#9&_yrez22x4d&0y78i6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ '47.94.236.221']
+ALLOWED_HOSTS = [ '127.0.0.1']
 
 
 # Application definition
@@ -87,17 +87,15 @@ DATABASES = {
 }
 
 CACHES = {
-	'default': {
-	     'BACKEND': 'redis_cache.cache.RedisCache',
- 	     'LOCATION': '127.0.0.1:6379',
-	     'OPTIONS': {
-		    'CLIENT_CLASS': 'redis_cache.client.DefaultClient',
-	  }
-      }
-}
-REDIS_TIMEOUT=7*24*60*60
-CUBES_REDIS_TIMEOUT=60*60
-NEVER_REDIS_TIMEOUT=365*24*60*60
+        'default': {
+            'BACKEND': 'django_redis.cache.RedisCache',
+            'LOCATION': '127.0.0.1:6379',
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            },
+        },
+    }
+
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
